@@ -15,7 +15,7 @@ public class Consumer implements Runnable {
     public void run() {
 
         for(int i = 0;  i < this.repeater;   i++) {
-            String message = buffer.take(myID);
+//            String message = buffer.take(myID);
         }
     }
 }

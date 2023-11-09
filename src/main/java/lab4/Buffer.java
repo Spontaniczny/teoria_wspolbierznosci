@@ -5,7 +5,7 @@ public class Buffer {
     public String MyBuffer;
     boolean is_empty = true;
     public int production_size;
-    private int no_
+//    private int no_
     public int[] production;
 
 
@@ -24,7 +24,7 @@ public class Buffer {
         String m = this.MyBuffer;
         this.MyBuffer = null;
         is_empty = true;
-        System.out.println("Consumer with ID " + ID + " took message: " + m);
+//        System.out.println("Consumer with ID " + ID + " took message: " + m);
         notifyAll();
         return m;
     }
