@@ -42,8 +42,15 @@ public class Waiter {
         }
         numberOfFightingPhilosophers++;
         lock1.unlock();
-        takeLeftFork(philosopherID);
-        takeRightFork(philosopherID);
+        int randomNumber = random.nextInt(1, 3);
+        if(randomNumber == 2){
+            takeLeftFork(philosopherID);
+            takeRightFork(philosopherID);
+        }
+        else{
+            takeRightFork(philosopherID);
+            takeLeftFork(philosopherID);
+        }
         philosopherEat(philosopherID);
         lock1.lock();
         numberOfFightingPhilosophers--;
