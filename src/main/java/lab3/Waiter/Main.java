@@ -1,14 +1,12 @@
 package lab3.Waiter;
 
-import java.util.Random;
-
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        int numberOfPairs = 2;
+        int numberOfPairs = 4;
         int numberOfPeople = numberOfPairs * 2;
         Thread[] threads = new Thread[numberOfPeople];
-        Waiter waiter = new Waiter();
+        Waiter waiter = new Waiter(numberOfPairs);
 
         int i;
         for(i=0; i < numberOfPeople; i++){
