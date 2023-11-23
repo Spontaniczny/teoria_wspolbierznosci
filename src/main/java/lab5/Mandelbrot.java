@@ -57,7 +57,7 @@ public class Mandelbrot extends JFrame {
 //        }
     }
 
-    public void Calculate() throws ExecutionException, InterruptedException {
+    public void calculate() throws ExecutionException, InterruptedException {
         ExecutorService threadPool = Executors.newFixedThreadPool(threadNo);
         List<Future<Integer>> codes = new ArrayList<>();
 
