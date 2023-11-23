@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         int numberOfPhilosophers = 5;
         Thread[] threads = new Thread[numberOfPhilosophers];
-        Waiter waiter = new Waiter(numberOfPhilosophers, false);
+        Waiter waiter = new Waiter(numberOfPhilosophers, true);
 
         int i;
         for(i=0; i < numberOfPhilosophers; i++){

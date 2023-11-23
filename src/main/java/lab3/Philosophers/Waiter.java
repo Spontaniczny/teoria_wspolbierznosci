@@ -42,15 +42,12 @@ public class Waiter {
         }
         numberOfFightingPhilosophers++;
         lock1.unlock();
-        int randomNumber = random.nextInt(1, 3);
-        if(randomNumber == 2){
-            takeLeftFork(philosopherID);
-            takeRightFork(philosopherID);
+        if(!isWaiterAlive){
+            Thread.sleep(700); // without it, you wait too long for deadlock
         }
-        else{
-            takeRightFork(philosopherID);
-            takeLeftFork(philosopherID);
-        }
+        takeLeftFork(philosopherID);
+        takeRightFork(philosopherID);
+
         philosopherEat(philosopherID);
         lock1.lock();
         numberOfFightingPhilosophers--;
