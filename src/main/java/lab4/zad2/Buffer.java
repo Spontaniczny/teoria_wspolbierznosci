@@ -28,7 +28,6 @@ public class Buffer {
 
     public void Produce(int ProducerID, int productionSize){
         lock.lock();
-        long start = System.currentTimeMillis();
         while(freeSpace - productionSize < 0){
             try {
                 System.out.println("Producer " + ProducerID + "waits for: " + productionSize + " space");
@@ -51,8 +50,6 @@ public class Buffer {
         else{
             normalLock.signalAll();
         }
-        long finish = System.currentTimeMillis();
-        long waitedTime = finish - start;
         lock.unlock();
         System.out.println("Producer, " + ProducerID + "added " + productionSize + " products.");
         System.out.println("Free space: " + freeSpace);
@@ -60,7 +57,6 @@ public class Buffer {
 
     public synchronized void Consume(int ConsumerID, int consumptionSize){
         lock.lock();
-        long start = System.currentTimeMillis();
         while(freeSpace + consumptionSize > bufferSize){
             try {
                 System.out.println("Consumer " + ConsumerID + "waits for: " + consumptionSize + " food");
@@ -83,9 +79,6 @@ public class Buffer {
         else{
             normalLock.signalAll();
         }
-        long finish = System.currentTimeMillis();
-        long waitedTime = finish - start;
-        System.out.println("Consumer waited: " + waitedTime);
         lock.unlock();
         System.out.println("Consumer, " + ConsumerID + " consumed " + consumptionSize + " products.");
         System.out.println("Free space: " + freeSpace);
