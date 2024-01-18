@@ -1,20 +1,19 @@
-package lab4.zad1;
+package lab4.zad2;
+
+import java.util.Random;
 
 public class Producer implements Runnable {
     private Buffer buffer;
-    private int productionTime;
     private int ID;
-    private int index = 0;
 
-    public Producer(Buffer buffer, int productionTime, int ID) {
+    public Producer(Buffer buffer, int ID) {
         this.buffer = buffer;
-        this.productionTime = productionTime;
         this.ID = ID;
     }
 
     public void run() {
 
-        for(int i = 0;  i < buffer.productionLine.length * 5;  i++) {
+        for(int i = 0;  i < buffer.numberOfProductions;  i++) {
             try {
                 Produce();
             } catch (InterruptedException e) {
@@ -24,11 +23,9 @@ public class Producer implements Runnable {
     }
 
     public void Produce() throws InterruptedException {
-//        while(buffer.productionLine[index] != ID){
-//            wait();
-//        }
-        Thread.sleep(productionTime);
-        buffer.Produce(index, ID);
-        index = (index + 1) % buffer.productionLine.length;
+        Random random = new Random();
+        Thread.sleep(random.nextInt(200, 1000));
+        int productionSize = random.nextInt(1, (int) buffer.bufferSize / 2);
+        buffer.Produce(ID, productionSize);
     }
 }

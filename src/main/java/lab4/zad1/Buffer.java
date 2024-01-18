@@ -1,4 +1,4 @@
-package lab4;
+package lab4.zad1;
 
 public class Buffer {
     public int[] productionLine;
