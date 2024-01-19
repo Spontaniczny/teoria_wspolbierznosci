@@ -1,2 +1,3 @@
 *.ipynb linguist-vendored
 *.xml linguist-vendored
+*.xslt linguist-vendored
