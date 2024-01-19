@@ -24,15 +24,17 @@ public class Consumer implements Runnable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            avgWaitTime = totalWaitTime / buffer.numberOfProductions;
         }
     }
 
     public void Consume() throws InterruptedException {
         Random random = new Random();
         Thread.sleep(random.nextInt(200, 1000));
-        int ConsumptionSize = random.nextInt(1, (int) buffer.bufferSize / 2);
+        int ConsumptionSize = random.nextInt(1, (int) buffer.bufferSize / 2 - 1);
         long start = System.currentTimeMillis();
         buffer.Consume(ID, ConsumptionSize);
+
         long finish = System.currentTimeMillis();
         long waitedTime = finish - start;
         if (waitedTime > maxWaitTime) {maxWaitTime = waitedTime;}

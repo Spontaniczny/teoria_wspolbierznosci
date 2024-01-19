@@ -24,13 +24,14 @@ public class Producer implements Runnable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            avgWaitTime = totalWaitTime / buffer.numberOfProductions;
         }
     }
 
     public void Produce() throws InterruptedException {
         Random random = new Random();
         Thread.sleep(random.nextInt(200, 1000));
-        int productionSize = random.nextInt(1, (int) buffer.bufferSize / 2);
+        int productionSize = random.nextInt(1, (int) buffer.bufferSize / 2 - 1);
         long start = System.currentTimeMillis();
         buffer.Produce(ID, productionSize);
 

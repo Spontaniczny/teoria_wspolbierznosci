@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Buffer {
     public int bufferSize;
     public int freeSpace;
-    public int numberOfProductions = 20;
+    public int numberOfProductions;
 
     final private Lock lock = new ReentrantLock();
     final Condition normalLock = lock.newCondition();
@@ -19,9 +19,10 @@ public class Buffer {
 
 
 
-    public Buffer(int bufferSize){
+    public Buffer(int bufferSize, int numberOfProductions){
         this.bufferSize = bufferSize;
         this.freeSpace = bufferSize;
+        this.numberOfProductions = numberOfProductions;
 
     }
 
