@@ -1,3 +1,5 @@
 *.ipynb linguist-vendored
 *.xml linguist-vendored
 *.xsl linguist-vendored
+*.mod.svn-base linguist-vendored
+*.mod linguist-vendored
