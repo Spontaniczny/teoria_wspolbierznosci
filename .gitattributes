@@ -3,3 +3,4 @@
 *.xsl linguist-vendored
 *.mod.svn-base linguist-vendored
 *.mod linguist-vendored
+*.html linguist-vendored
